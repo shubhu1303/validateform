@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Order Page</title>
+<script>
+
+
+  function validateMobileNumber() {
+    var contact = document.getElementsByName("contct")[0].value;
+    var regex =/^\d{10}$/; 
+    if (!regex.test(contact)) {
+      alert("Please enter a 10 digit mobile number");
+      
+    }
+    
+  }
+function validateEmail() {
+    var email = document.getElementsByName("eml")[0].value;
+    var regex =/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+    if (!regex.test(email)) {
+      alert("Please enter a valid email address.");
+      
+    }
+    
+  }
+function validateTagline(input) {
+  if (input.value.length > 15) {
+    alert("Tagline should not exceed 15 characters.");
+    input.value = input.value.substring(0, 15);
+  }
+}
+
+function validatefirstName() {
+    var fstname = document.getElementsByName("fname")[0].value;
+    var regex =/[^A-Z,a-z]/ 
+    if (regex.test(fstname)) {
+      alert("Please enter a valid first name (letters and spaces, up to 20 characters).");
+      
+    }
+    
+  }
+
+  function validatelastName() {
+    var lstname = document.getElementsByName("lname")[0].value;
+    var regex =/[^A-Z,a-z]/ 
+    if (regex.test(lstname)) {
+      alert("Please enter a valid last name (letters and spaces, up to 20 characters).");
+      
+    }
+    
+  }
+
+function generateReceipt(form) {
+  var receipt = "Receipt:\n";
+  receipt += "First Name: " + form.fname.value + "\n";
+  receipt += "Last Name: " + form.lname.value + "\n";
+  receipt += "Contact No: " + form.contct.value + "\n";
+  receipt += "Address: " + form.w3review.value + "\n";
+  receipt += "Tagline: " + form.tgln.value + "\n";
+  receipt += "Email: " + form.eml.value + "\n";
+  receipt += "Color: " + form.favcolor.value + "\n";
+  receipt += "Quantity: " + form.quan.value + "\n";
+  receipt += "Size: " + form.size.value + "\n";
+  receipt += "Date: " + form.date.value + "\n";
+  
+  alert(receipt);
+}
+</script>
+</head>
+<body>
+<form name="form1">
+<fieldset>
+<legend><header><b><font size="3" face="Georgia" color="black" background-color="Blue">T-shirt details</header></legend></b></font>
+<p>
+     <b><font size="3" face="Georgia" color="black">First name: <input type="text" placeholder="Enter First Name" name="fname" onblur="validatefirstName(this)" /></b></font>
+</p>
+<p>
+      <b><font size="3" face="Georgia" color="black">Last name: <input type="text" placeholder="Enter Last Name" name="lname" onblur="validatelastName(this)" /></b></font>
+</p>
+<p>
+      <b><font size="3" face="Georgia" color="black">Contact No: <input type="text" placeholder="Enter Mobile Number" name="contct" onblur="validateMobileNumber(this)" /></b></font>
+</p>
+<p>
+      <b><font size="3" face="Georgia" color="black">Address: <textarea id="w3review" name="w3review" placeholder="Enter Address" rows="4" cols="50"></textarea></b></font>
+</p>
+<p>
+      <b><font size="3" face="Georgia" color="black">Tagline: <input type="text" placeholder="Enter Your T-shirt tagline" name="tgln" maxlength="15" onblur="validateTagline(this)" /></b></font>
+</p>
+<p>
+      <b><font size="3" face="Georgia" color="black">Upload Logo Design:  <input type="file" id="myFile" name="filename"> </b></font>
+</p>
+<p>
+     <b><font size="3" face="Georgia" color="black">Email: <input type="email" placeholder="Enter email id" name="eml" onblur="validateEmail(this)" /></b></font>
+</p>
+<p>
+      <b><font size="3" face="Georgia" color="black">Color:  </b></font>
+    <input type="color" id="favcolor" name="favcolor" value="#C39BD3"><br>
+</p>
+<p>
+   <label for="quan"><b><font size="3" face="Georgia" color="black">Quantity:</b></font></label>
+    <select name="quan" id="quan">
+    <option value="one">1</option>
+    <option value="two">2</option>
+    <option value="three">3</option>
+    <option value="four">4</option>
+    <option value="five">5</option>
+    <option value="six">6</option>
+  </select>
+</p>
+<p>
+     <b><font size="3" face="Georgia" color="black">Size:</b></font>
+         <input type="radio" name="size" value="S"> S
+         <input type="radio" name="size" value="M"> M
+         <input type="radio" name="size" value="XL"> XL
+         <input type="radio" name="size" value="XXL"> XXL
+</p>
+<p>
+  <label for="date"><b><font size="3" face="Georgia" color="black">Date:</b></font></label>
+  <input type="date" id="date" name="date">
+</p>
+<p>
+      <input type="button" value="Submit" onclick="generateReceipt(this.form)" />
+	   <input type="reset" value="Reset">
+</p>
+<footer>
+    <address>
+        <center><strong>Contact:</strong> Shubham Jha | Email: shubham@email.com | Phone: +91 123-456-7890</center>
+    </address>
+</footer>
+</fieldset>
+</form>
+</body>
+</html>
